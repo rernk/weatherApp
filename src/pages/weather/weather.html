@@ -1,0 +1,46 @@
+<!--
+
+  //"https://openweathermap.org/img/wn/"+weather.weather[0].icon+"@2x.png"
+
+  Generated template for the WeatherPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>weather</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="C_weather">
+  <ion-grid *ngIf="weather">
+    <ion-row>
+      <ion-col width-40 offset-20>
+        <h2 class="location">{{weather.name+","+weather.sys.country}}</h2>  
+        <div class="icon"><img src="{{weather_icon1+weather_part+weather_icon2 }}" alt=""></div> 
+        <h3 class="desc">{{weather.weather[0].description}}</h3>
+        <h1 class="temp">{{weather.main.temp}}&deg;C</h1>
+        
+      </ion-col>
+  </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<!--
+
+{coord: {lon: 17.8309, lat: 48.7576},…}
+base: "stations"
+clouds: {all: 90}
+cod: 200
+coord: {lon: 17.8309, lat: 48.7576}
+dt: 1611438963
+id: 3058477
+main: {temp: 1.94, feels_like: -1.7, temp_min: 1.67, temp_max: 2.22, pressure: 997, humidity: 93}
+name: "Nové Mesto nad Váhom"
+sys: {type: 1, id: 7051, country: "SK", sunrise: 1611383360, sunset: 1611415885}
+timezone: 3600
+visibility: 10000
+weather: [{id: 804, main: "Clouds", description: "overcast clouds", icon: "04n"}]
+wind: {speed: 2.57, deg: 330}
+-->
