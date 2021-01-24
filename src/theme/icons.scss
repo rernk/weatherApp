@@ -1,0 +1,18 @@
+ion-icon {
+    &[class*="custom-"] {
+       mask-size: contain;
+       mask-position: 50% 50%;
+       mask-repeat: no-repeat;
+       background: currentColor;
+       width: 1em;
+       height: 1em;
+    }
+    &[class*="humidity-user-icon"] {
+       mask-image: url(/assets/imgs/humidity.png);
+    }
+    &[class*="pressure-user-icon"] {
+        mask-image: url(/assets/imgs/pressure.png);
+        width: 5px;
+        height: 5px;
+     }
+ }

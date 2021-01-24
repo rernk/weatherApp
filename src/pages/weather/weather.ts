@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import {WeatherProvider} from '../../providers/weather/weather';
-
+import {Storage} from '@ionic/storage';
 /**
  * Generated class for the WeatherPage page.
  *
@@ -9,7 +9,7 @@ import {WeatherProvider} from '../../providers/weather/weather';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-weather',
   templateUrl: 'weather.html',
@@ -24,28 +24,44 @@ export class WeatherPage {
     state:string
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private weatherProvider:WeatherProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private weatherProvider:WeatherProvider,
+    private storage:Storage) {
   }
 
   ionViewWillEnter()
   {
-    this.location =
-    {
-      //city: 'Bratislava',
-      //city: 'Nové Mesto nad Váhom',
-      city: 'Miami',
-      state: 'USA'
-      //state:'sk'
-    }
 
-    this.weatherProvider.getWeather(this.location.city,this.location.state).subscribe(weather => {
-      //Concole output
-      //console.log(weather);
-      this.weather_part = weather.weather[0].icon
-      this.weather_icon1 = "https://openweathermap.org/img/wn/"
-      this.weather_icon2 = "@2x.png";
-      this.weather = weather;
+    this.storage.get('location').then((tmp)=>{
+      if(tmp != null)
+      {
+        this.location = JSON.parse(tmp);
+      }
+      else
+      {
+        this.location =
+        {
+          //city: 'Bratislava',
+          city: 'Nové Mesto nad Váhom',
+          //city: 'Miami',
+          //state: 'USA'
+          state:'sk'
+        }
+      }
+      this.weatherProvider.getWeather(this.location.city,this.location.state).subscribe(weather =>{
+        //Concole output
+        //console.log(weather);
+        //this.weather_part = weather.weather[0].icon
+        this.weather_icon1 = "https://openweathermap.org/img/wn/"
+        this.weather_icon2 = "@2x.png";
+        this.weather = weather;
+      });
     });
+    
+
+    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad WeatherPage');

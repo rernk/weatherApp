@@ -17,11 +17,41 @@
     <ion-row>
       <ion-col width-40 offset-20>
         <h2 class="location">{{weather.name+","+weather.sys.country}}</h2>  
-        <div class="icon"><img src="{{weather_icon1+weather_part+weather_icon2 }}" alt=""></div> 
+        <!--<div class="icon"><img src="{{weather_icon1+weather_part+weather_icon2 }}" alt=""></div> -->
+        <div class="icon"><img src= "{{weather_icon1+weather.weather[0].icon+weather_icon2}}" alt=""></div> 
         <h3 class="desc">{{weather.weather[0].description}}</h3>
         <h1 class="temp">{{weather.main.temp}}&deg;C</h1>
-        
       </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-80>
+        <ion-item>
+          <strong>Temp: </strong>{{weather.main.temp}}&deg;C  (feels like: {{weather.main.feels_like}}&deg;C)
+          
+        </ion-item>
+        <ion-item>
+          <strong>Min temp: </strong>{{weather.main.temp_min}}&deg;C    <strong>Max temp: </strong>{{weather.main.temp_max}}&deg;C
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/humidity.png" width="15px" height="15px" alt="humidity"> Humidity:  </strong>{{weather.main.humidity}}%
+          <!--<div class="icon_humidity"><img src="'assets/imgs/sunrise'" alt="Humidity" style="width::100%" loading:"eager"></div>-->
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/pressure.png" width="15px" height="15px" alt="pressure"> Pressure: </strong>{{weather.main.pressure}}hPa
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/wind.png" width="15px" height="15px" alt="pressure"> Wind: </strong>{{weather.wind.speed}}m/S
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/info.png" width="15px" height="15px" alt="pressure"> Visibility: </strong>{{(weather.visibility/1000)}}km
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/sunrise.png" width="15px" height="15px" alt="pressure"> Sunrise: </strong>{{weather.sys.sunrise}}
+        </ion-item>
+        <ion-item>
+          <strong><img src="/assets/imgs/sunset.png" width="15px" height="15px" alt="pressure"> Sunset: </strong>{{weather.sys.sunset}}
+        </ion-item>
+    </ion-col>
   </ion-row>
   </ion-grid>
 

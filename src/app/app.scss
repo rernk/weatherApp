@@ -1,3 +1,6 @@
+//@import "../assets/imgs/logo.png";
+@import "../theme/icons.scss";
+
 .C_home{
     background:color($colors, primary);
     color: color($colors, light);
@@ -27,4 +30,24 @@
 
 .tabs-md, .tab-button-icon{
     color: #aca;
+}
+
+.temp{
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+    //background: url('../assets/imgs/humidity.png');
+}
+.location,.icon,.desc
+{  
+      text-align: center;
+}
+.icon img{
+    width: 60px;
+}
+.location{
+    font-size:30px;
+}
+.desc{
+    font-size: small;
 }
