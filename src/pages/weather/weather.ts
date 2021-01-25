@@ -19,6 +19,8 @@ export class WeatherPage {
   weather_part:string;
   weather_icon1:string;
   weather_icon2:string;
+  date_sunset:any;
+  date_sunrise:any;
   location:{
     city:string,
     state:string
@@ -51,13 +53,18 @@ export class WeatherPage {
         }
       }
       this.weatherProvider.getWeather(this.location.city,this.location.state).subscribe(weather =>{
-        //Concole output
+        //Concole outputs
         //console.log(weather);
         //this.weather_part = weather.weather[0].icon
         this.weather_icon1 = "https://openweathermap.org/img/wn/"
         this.weather_icon2 = "@2x.png";
-        this.weather = weather;
+        this.weather = weather as any;
+        //this.date_sunrise =new Date(weather.sys.sunrise).toLocaleTimeString('en-US',{hour12:false});
+        //this.date_sunset = new Date(weather.sys.sunset).toLocaleTimeString('en-US',{hour12:false});
+        console.log(this.weather.sys.sunrise);
+
       });
+      console.log(this.weather);
     });
     
 
